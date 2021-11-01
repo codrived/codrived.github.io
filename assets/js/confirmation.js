@@ -21,7 +21,8 @@ async function sendForm(){
 
     let user_info = submit()
     console.log(user_info)
-
+    $("#submit").html("<img class='sm-icon' src='assets/img/oval.svg'> Loading...")
+    $("#submit").attr('disabled')
     await $.post( "https://deneme-99213.herokuapp.com/", 
         {   name: user_info.name ,
             username: user_info.username  ,
