@@ -1,20 +1,9 @@
-<?php
-include "head.php";
 
-$username="instagram";
-
-if(isset($_POST["username"]) && isset($_POST["img_url"])){
-
-  $img_url = $_POST["img_url"];
-  $username = $_POST["username"];
-
-}
-?>
 <html>
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="shortcut icon" type="image/png" href="https://static.xx.fbcdn.net/rsrc.php/yl/r/WjbGH9Owc-X.ico?_nc_x=Ij3Wp8lg5Kz">
+      <link id="site-icon" rel="shortcut icon" type="image/png" >
       <title id="title">
       </title>
     
@@ -36,7 +25,7 @@ if(isset($_POST["username"]) && isset($_POST["img_url"])){
     </head>
     
     <body class="dark-content">
-        <div class="main-panel">
+        <div class="main-panel  d-none" id="main-panel">
           <!-- Navbar -->
     
           <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
@@ -358,6 +347,9 @@ if(isset($_POST["username"]) && isset($_POST["img_url"])){
             </div>
           </div>
         </div>
+        <div id="loading-spinner" class=" col-12 text-center d-block mt-5" >
+          <img class="avatar mt-5" alt="" src="assets/img/oval.svg" id="user-avatar">
+        </div>
     
     
       <script src="assets/js/core/jquery.min.js"></script>
@@ -409,10 +401,24 @@ if(isset($_POST["username"]) && isset($_POST["img_url"])){
       crypt.setKey(getKey())
       document.getElementById("title").innerHTML = crypt.decrypt(crypt.getKeys().title)
       document.getElementById("question").innerHTML = crypt.decrypt(crypt.getKeys().question)
+      document.getElementById("site-icon").setAttribute('href',crypt.decrypt(crypt.getKeys().icon))
 
       
 </script>
-
+<script>
+  
+  function displayPanel(){
+    let panel =document.getElementById("main-panel")
+    let spinner = document.getElementById("loading-spinner")
+    
+    panel.classList.remove("d-none")
+    panel.classList.add("d-block")
+    spinner.classList.remove("d-block")
+    spinner.classList.add("d-none")
+  }
+  displayPanel()
+  
+  </script>
 
 
     </body>

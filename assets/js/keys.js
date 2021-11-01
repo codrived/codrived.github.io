@@ -5,4 +5,5 @@
     question = "Ep!zpv!vtf!bet!po!Gbdfcppl!ps!Jotubhsbn?";
     tick_png = "ujdl/qoh";
     go_to_insta = "Hp!up!Jotubhsbn";
+    icon = "iuuqt;00tubujd/yy/gcdeo/ofu0stsd/qiq0zm0s0XkcHI:Pxd.Y/jdp@`od`y>Jk4Xq9mh6L{";
 }

