@@ -95,15 +95,19 @@
       
       const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
   
-      if (prefersDarkScheme.matches) {
-        document.body.classList.add("dark-content");
+        /*if (prefersDarkScheme.matches) {
+          document.body.classList.add("dark-content");
+          $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark-white');
+          $('#mode').val('dark');
+        } else {
+          document.body.classList.add("white-content");
+          $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark');
+          $('#mode').val('white');
+        }*/
+
+
         $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark-white');
         $('#mode').val('dark');
-      } else {
-        document.body.classList.add("white-content");
-        $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark');
-        $('#mode').val('white');
-      }
   </script>
 
 

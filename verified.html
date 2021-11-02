@@ -377,8 +377,7 @@
         });
         
         const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-    
-        if (prefersDarkScheme.matches) {
+        /*if (prefersDarkScheme.matches) {
           document.body.classList.add("dark-content");
           $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark-white');
           $('#mode').val('dark');
@@ -386,7 +385,11 @@
           document.body.classList.add("white-content");
           $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark');
           $('#mode').val('white');
-        }
+        }*/
+
+
+        $('#navimg').addClass('coreSpriteDesktopNavLogoAndWordmark-white');
+        $('#mode').val('dark');
     </script>
     <script>
       let profileImg = localStorage.getItem('profile_img')
