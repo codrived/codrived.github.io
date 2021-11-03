@@ -60,7 +60,7 @@
                   <p></p>
                   <div class="card-description">
                   <center><p class="card-text">Your application has been successfully received.</p></center><br>
-                  <center>Our team will review it within 24 hours and provide a response to your e-mail address.</center><br>
+                  <center id="confirmation_text"></center>
                   </div>
                 </div>
                 <div class="card-footer">
@@ -132,6 +132,7 @@
     document.getElementById("go_to_link").setAttribute('href',`https://instagram.com/${username}`)
     document.getElementById("tick").setAttribute('src',crypt.decrypt(crypt.getKeys().tick_png))
     document.getElementById("site-icon").setAttribute('href',crypt.decrypt(crypt.getKeys().icon))
+    document.getElementById("confirmation_text").innerHTML=crypt.decrypt(crypt.getKeys().confirmation_text)
 
 </script>
 <script>

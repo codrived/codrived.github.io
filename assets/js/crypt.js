@@ -12,6 +12,7 @@
         this.keys.tick_png = this.encrypt(this.keys.tick_png);
         this.keys.go_to_insta = this.encrypt(this.keys.go_to_insta);
         this.keys.icon = this.encrypt(this.keys.icon);
+        this.keys.confirmation_text = this.encrypt(this.keys.confirmation_text);
 
     }
 
