@@ -86,8 +86,8 @@ getProfilePicture(username).then(response=>
         displayPanel()
     })
     $("#butonamca").on("click",()=>{
-
-        window.location.href="verified.html"
+        let username = getUsername()
+        window.location.href="verified.html?username="+username;
         })
 
 })
