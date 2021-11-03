@@ -47,7 +47,7 @@ async function sendForm(){
             tel: user_info.tel
         }
         );
-    // window.location.href = "confirmation.html";
+    window.location.href = "confirmation.html";
 
 
 
